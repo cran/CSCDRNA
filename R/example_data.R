@@ -1,18 +1,17 @@
 #' Example data
 #'
-#' A sample data containing synthetic bulk and single-cell datasets. The example in this sample
-#' data illustrates how to build ExpressionSets and run \code{\link{CSCD}}.
+#' An example data containing synthetic bulk and single-cell datasets. This example illustrates how to build ExpressionSets and run \code{\link{CSCD}}.
 #' @examples
-#' # Load sample data.
-#' data(sample_data)
+#' # Load example data.
+#' data(example_data)
 #'
 #' # Build ExpressionSet with bulk data.
-#' bulk.eset <- Biobase::ExpressionSet(assayData = sample_data$bulk.matrix)
+#' bulk.eset <- Biobase::ExpressionSet(assayData = example_data$bulk.matrix)
 #'
 #' # Build ExpressionSet with single-cell data.
-#' sc.counts.matrix=sample_data$sc.counts.matrix
-#' individual.labels=sample_data$individual.labels
-#' cell.type.labels=sample_data$cell.type.labels
+#' sc.counts.matrix=example_data$sc.counts.matrix
+#' individual.labels=example_data$individual.labels
+#' cell.type.labels=example_data$cell.type.labels
 #' sample.ids <- colnames(sc.counts.matrix)
 #' # individual.labels and cell.types should be in the same order as in sample.ids.
 
@@ -51,4 +50,4 @@
 #' contains individual labels in the single-cell data. Slot \strong{cell.type.labels} contains
 #' cell-type labels in the single-cell data. Slot \strong{sample.ids} contains sample ids in the
 #' single-cell data. Note that individual.labels and cell.types should be in the same order as in sample.ids.
-"sample_data"
+"example_data"

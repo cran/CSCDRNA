@@ -4,18 +4,20 @@
 \alias{CSCD}
 \title{Performs gene expression decomposition.}
 \usage{
-CSCD(bulk.eset,
+CSCD(
+  bulk.eset,
   sc.eset,
   min.p = NULL,
   markers = NULL,
   cell.types = "cellType",
   subj.names = "SubjectName",
-  verbose = TRUE)
+  verbose = TRUE
+)
 }
 \arguments{
-\item{bulk.eset}{ExpressionSet with bulk data. Bulk RNA-seq data can be converted from a matrix with samples in columns and genes in rows to an ExpressionSet. See \code{\link{sample_data}} for an example on how to create a bulk.eset object.}
+\item{bulk.eset}{ExpressionSet with bulk data. Bulk RNA-seq data can be converted from a matrix with samples in columns and genes in rows to an ExpressionSet. See \code{\link{example_data}} for an example on how to create a bulk.eset object.}
 
-\item{sc.eset}{ExpressionSet with single-cell data. Single-cell data requires additional information in the ExpressionSet, specifically cell-type labels and individual labels. See \code{\link{sample_data}} for an example on how to create a sc.eset object.}
+\item{sc.eset}{ExpressionSet with single-cell data. Single-cell data requires additional information in the ExpressionSet, specifically cell-type labels and individual labels. See \code{\link{example_data}} for an example on how to create a sc.eset object.}
 
 \item{min.p}{A percentage. This parameter is passed to the \code{\link[Seurat:FindAllMarkers]{Seurat::FindAllMarkers()}} function (Butler et al., 2019) to pick the most relevant genes to each cell-type cluster. Users may pick a number between 0.3 and 0.5 for best results. The higher the value, the more genes to be excluded from the analysis.}
 
@@ -42,13 +44,15 @@ proportion estimates.
 }
 \description{
 Provides accurate cell-type proportion estimation by incorporating covariance structure
-in given single-cell RNA-seq (scRNA-seq) and bulk RNA-seq datasets. The approach uses an extension
-of the transformation used in \code{\link[BisqueRNA:ReferenceBasedDecomposition]{BisqueRNA::ReferenceBasedDecomposition()}} package, see Jew et al. (2020).
+in given single-cell RNA-seq (scRNA-seq) and bulk RNA-seq datasets, see Karimnezhad (2022). The approach uses an extension
+of the transformation used in Jew et al. (2020) implemented in the \code{\link[BisqueRNA:ReferenceBasedDecomposition]{BisqueRNA::ReferenceBasedDecomposition()}} function.
 }
 \references{
+Butler, A. et al. (2019). Seurat: Tools for Single Cell Genomics. R package version, 4.1.1.
+
 Jew, B. et al. (2020) Accurate estimation of cell composition in bulk expression through robust integration of single-cell information. Nat Commun 11, 1971. https://doi.org/10.1038/s41467-020-15816-6
 
 Jew, B. and Alvarez, M. (2020). BisqueRNA: Decomposition of Bulk Expression with Single-Cell Sequencing. R package version, 1.0.5.
 
-Butler, A. et al. (2019). Seurat: Tools for Single Cell Genomics. R package version, 4.1.1.
+Karimnezhad, A. (2022) More accurate estimation of cell composition in bulk expression through robust integration of single-cell information. https://doi.org/10.1101/2022.05.13.491858
 }

@@ -26,7 +26,8 @@ DB_sqrtm <- function(M){
   return(Y)
 }
 
-#' Find overlapping genes in single-cell data, bulk data, and marker genes
+#' Find overlapping genes in single-cell data, bulk data, and marker genes.
+#' The original code is available here: https://github.com/cran/BisqueRNA/blob/master/R/reference_based.R
 #'
 #' @param sc.eset ExpressionSet with single-cell data
 #' @param bulk.eset ExpressionSet with bulk data
@@ -56,8 +57,8 @@ GetOverlappingGenes <- function(sc.eset, bulk.eset, markers, verbose) {
   return(overlapping.genes)
 }
 
-#' Convert counts data in ExpressionSet to counts per million (CPM)
-#'
+#' Convert counts data in ExpressionSet to counts per million (CPM).
+#' The original code is available here: https://github.com/cran/BisqueRNA/blob/master/R/utils.R
 #' @param eset ExpressionSet containing counts assay data.
 #' @return eset ExpressionSet containing CPM assay data
 #' @noRd
@@ -75,7 +76,8 @@ CountsToCPM <- function(eset) {
   return(eset)
 }
 
-#' Remove genes in ExpressionSet with zero variance across samples
+#' Remove genes in ExpressionSet with zero variance across samples.
+#' The original code is available here: https://github.com/cran/BisqueRNA/blob/master/R/utils.R
 #'
 #' @param eset ExpressionSet
 #' @param verbose Boolean. Print logging info
@@ -97,7 +99,8 @@ FilterZeroVarianceGenes <- function(eset, verbose=TRUE) {
   return(eset)
 }
 
-#' Remove genes in ExpressionSet with zero expression in all samples
+#' Remove genes in ExpressionSet with zero expression in all samples.
+#' The original code is available here: https://github.com/cran/BisqueRNA/blob/master/R/utils.R
 #'
 #' @param eset ExpressionSet
 #' @param verbose Boolean. Print logging info
@@ -119,7 +122,8 @@ FilterUnexpressedGenes <- function(eset, verbose=TRUE) {
   return(eset)
 }
 
-#' Generate reference profile for cell types identified in single-cell data
+#' Generate reference profile for cell types identified in single-cell data.
+#' The original code is available here: https://github.com/cran/BisqueRNA/blob/master/R/reference_based.R
 #'
 #' Averages expression within each cell type across all samples to use as
 #' reference profile.
@@ -141,7 +145,8 @@ GenerateSCReference <- function(sc.eset, cell.types) {
   return(sc.ref)
 }
 
-#' Calculate cell proportions based on single-cell data
+#' Calculate cell proportions based on single-cell data.
+#' The original code is available here: https://github.com/cran/BisqueRNA/blob/master/R/reference_based.R
 #'
 #' Returns proportion of each cell type out of total cells for each individual
 #' in the single-cell ExpressionSet
@@ -189,10 +194,10 @@ FindAllMarkers_filter.by.cluster=function(M){
 #' Performs gene expression decomposition.
 #'
 #' Provides accurate cell-type proportion estimation by incorporating covariance structure
-#'in given single-cell RNA-seq (scRNA-seq) and bulk RNA-seq datasets. The approach uses an extension
-#'of the transformation used in \code{\link[BisqueRNA:ReferenceBasedDecomposition]{BisqueRNA::ReferenceBasedDecomposition()}} package, see Jew et al. (2020).
-#' @param bulk.eset ExpressionSet with bulk data. Bulk RNA-seq data can be converted from a matrix with samples in columns and genes in rows to an ExpressionSet. See \code{\link{sample_data}} for an example on how to create a bulk.eset object.
-#' @param sc.eset ExpressionSet with single-cell data. Single-cell data requires additional information in the ExpressionSet, specifically cell-type labels and individual labels. See \code{\link{sample_data}} for an example on how to create a sc.eset object.
+#'in given single-cell RNA-seq (scRNA-seq) and bulk RNA-seq datasets, see Karimnezhad (2022). The approach uses an extension
+#'of the transformation used in Jew et al. (2020) implemented in the \code{\link[BisqueRNA:ReferenceBasedDecomposition]{BisqueRNA::ReferenceBasedDecomposition()}} function.
+#' @param bulk.eset ExpressionSet with bulk data. Bulk RNA-seq data can be converted from a matrix with samples in columns and genes in rows to an ExpressionSet. See \code{\link{example_data}} for an example on how to create a bulk.eset object.
+#' @param sc.eset ExpressionSet with single-cell data. Single-cell data requires additional information in the ExpressionSet, specifically cell-type labels and individual labels. See \code{\link{example_data}} for an example on how to create a sc.eset object.
 #' @param min.p A percentage. This parameter is passed to the \code{\link[Seurat:FindAllMarkers]{Seurat::FindAllMarkers()}} function (Butler et al., 2019) to pick the most relevant genes to each cell-type cluster. Users may pick a number between 0.3 and 0.5 for best results. The higher the value, the more genes to be excluded from the analysis.
 #' @param markers Character string. A vector containing marker genes
 #'   to be used in decomposition. If NULL is provided, the method will use all available genes for decomposition.
@@ -215,9 +220,10 @@ FindAllMarkers_filter.by.cluster=function(M){
 #' @import plyr
 #' @import MAST
 #' @import Seurat
+#' @references Butler, A. et al. (2019). Seurat: Tools for Single Cell Genomics. R package version, 4.1.1.
 #' @references Jew, B. et al. (2020) Accurate estimation of cell composition in bulk expression through robust integration of single-cell information. Nat Commun 11, 1971. https://doi.org/10.1038/s41467-020-15816-6
 #' @references Jew, B. and Alvarez, M. (2020). BisqueRNA: Decomposition of Bulk Expression with Single-Cell Sequencing. R package version, 1.0.5.
-#' @references Butler, A. et al. (2019). Seurat: Tools for Single Cell Genomics. R package version, 4.1.1.
+#' @references Karimnezhad, A. (2022) More accurate estimation of cell composition in bulk expression through robust integration of single-cell information. https://doi.org/10.1101/2022.05.13.491858
 #'
 #' @export
 CSCD<-function(bulk.eset, sc.eset,min.p=NULL,markers=NULL,
