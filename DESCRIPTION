@@ -1,7 +1,7 @@
 Package: CSCDRNA
 Title: Covariance Based Single-Cell Decomposition of Bulk Expression
         Data
-Version: 1.0.2
+Version: 1.0.3
 Authors@R: c(person("Ali", "Karimnezhad", role = c("aut", "cre", "ctb"),
                     email = "ali.karimnezhad@gmail.com"))
 Author: Ali Karimnezhad [aut, cre, ctb]
@@ -15,9 +15,10 @@ Imports: nlshrink, limSolve, Biobase, BisqueRNA, methods, plyr, Seurat,
 RoxygenNote: 7.1.2
 Suggests: testthat (>= 3.0.0)
 Config/testthat/edition: 3
-Depends: R (>= 2.10)
+Depends: R (>= 4.0)
 LazyData: true
+BugReports: https://github.com/empiricalbayes/CSCDRNA/issues
 NeedsCompilation: no
-Packaged: 2022-05-20 15:40:16 UTC; ali
+Packaged: 2022-06-24 14:44:11 UTC; ali
 Repository: CRAN
-Date/Publication: 2022-05-21 00:30:06 UTC
+Date/Publication: 2022-06-24 16:50:02 UTC
